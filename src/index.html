@@ -26,7 +26,7 @@
           </select>
         </div>
         <div id="currency-rates">
-          <li>{{ src_currency }} 1 = {{ rate }} {{ dest_currency }}</li>
+          <li>{{ src_currency }} 1 = {{ rate.toFixed(2) }} {{ dest_currency }}</li>
           <li>IOF (1,10%) = {{ iof_value.toFixed(2) }} {{ src_currency }} </li>
           <li>Taxa administrativa = {{ fx_value }} {{ src_currency }}</li>
         </div>

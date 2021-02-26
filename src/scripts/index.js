@@ -14,7 +14,7 @@ const EventHandler = {
       converted_value: 0.00,
       iof_value: 0,
       fx_value: 0,
-      src_currency: 'USD',
+      src_currency: 'BRL',
       dest_currency: 'BRL',
       rate: 1
     }
