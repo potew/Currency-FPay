@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency converter</title>
+    <link rel="stylesheet" href="./styles/index.css"></head>
+    <body>
+      <div id="currency-form" class="converter">
+        <h1>Conversor de moedas</h1>
+        <div>
+          <label for="input-source-value">Você envia</label>
+          <input
+            id="input-source-value"
+            v-model="src_amount"
+            @keydown="calculate"
+          >
+          <select
+            v-model="src_currency"
+            @change="setRate"
+          >
+            <option key="BRL" value="BRL">Real</option>
+            <option key="USD" value="USD">Dólar</option>
+            <option key="EUR" value="EUR">Euro</option>
+          </select>
+        </div>
+        <div id="currency-rates">
+          <li>{{ src_currency }} 1 = {{ rate }} {{ dest_currency }}</li>
+          <li>IOF (1,10%) = {{ iof_value.toFixed(2) }} {{ src_currency }} </li>
+          <li>Taxa administrativa = {{ fx_value }} {{ src_currency }}</li>
+        </div>
+        <div>
+          <label for="input-converted-value">Beneficiário recebe</label>
+          <input
+            id="input-converted-value"
+            v-model="converted_value"
+            @keydown="calculate"
+          >
+          <select
+            v-model="dest_currency"
+            @change="setRate"
+          >
+            <option key="BRL" value="BRL">Real</option>
+            <option key="USD" value="USD">Dólar</option>
+            <option key="EUR" value="EUR">Euro</option>
+          </select>
+        </div>
+      </div>
+    </body>
+    <!-- Loading order matters! -->
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="./scripts/index.js"></script>
+
+</html>
