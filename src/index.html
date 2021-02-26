@@ -6,45 +6,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Currency converter</title>
     <link rel="stylesheet" href="./styles/index.css"></head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <body>
-      <div id="currency-form" class="converter">
+      <div id="currency-form" class="container-fluid">
         <h1>Conversor de moedas</h1>
-        <div>
-          <label for="input-source-value">Você envia</label>
-          <input
-            id="input-source-value"
-            v-model="src_amount"
-            @keydown="calculate"
-          >
-          <select
-            v-model="src_currency"
-            @change="setRate"
-          >
-            <option key="BRL" value="BRL">Real</option>
-            <option key="USD" value="USD">Dólar</option>
-            <option key="EUR" value="EUR">Euro</option>
-          </select>
-        </div>
-        <div id="currency-rates">
-          <li>{{ src_currency }} 1 = {{ rate.toFixed(2) }} {{ dest_currency }}</li>
-          <li>IOF (1,10%) = {{ iof_value.toFixed(2) }} {{ src_currency }} </li>
-          <li>Taxa administrativa = {{ fx_value }} {{ src_currency }}</li>
-        </div>
-        <div>
-          <label for="input-converted-value">Beneficiário recebe</label>
-          <input
-            id="input-converted-value"
-            v-model="converted_value"
-            @keydown="calculate"
-          >
-          <select
-            v-model="dest_currency"
-            @change="setRate"
-          >
-            <option key="BRL" value="BRL">Real</option>
-            <option key="USD" value="USD">Dólar</option>
-            <option key="EUR" value="EUR">Euro</option>
-          </select>
+        <div class="form-group">
+          <div class="send-box">
+            <label for="input-source-value">Você envia</label>
+            <input
+              id="input-source-value"
+              class="form-control"
+              v-model="src_amount"
+              @keyup="calculate"
+              required
+            >
+            <div class="valid-feedback">Ok.</div>
+            <div class="invalid-feedback">Preencha o valor de origem.</div>
+            <select
+              class="custom-select"
+              v-model="src_currency"
+              @change="setRate"
+            >
+              <option key="BRL" value="BRL">Reais</option>
+              <option key="USD" value="USD">Dólares</option>
+              <option key="EUR" value="EUR">Euros</option>
+            </select>
+          </div>
+          <div class="receive-box">
+            <label for="input-converted-value">Beneficiário recebe</label>
+            <input
+              id="input-converted-value"
+              class="form-control"
+              v-model="converted_value"
+              @keyup="calculate"
+            >
+            <select
+              class="custom-select"
+              v-model="dest_currency"
+              @change="setRate"
+            >
+              <option key="BRL" value="BRL">Reais</option>
+              <option key="USD" value="USD">Dólares</option>
+              <option key="EUR" value="EUR">Euros</option>
+            </select>
+          </div>
+          <div class="rates-box">
+            <li>{{ src_currency }} 1 = {{ rate.toFixed(2) }} {{ dest_currency }}</li>
+            <li>IOF (1,10%) = {{ iof_value.toFixed(2) }} {{ src_currency }} </li>
+            <li>Taxa administrativa = {{ fx_value }} {{ src_currency }}</li>
+          </div>
         </div>
       </div>
     </body>
